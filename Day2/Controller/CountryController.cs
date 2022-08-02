@@ -40,7 +40,7 @@ namespace WebApplication2.Controllers
         }
 
         [HttpGet]
-        [Route("Country/{name}")]
+        [Route("CountryName/{name}")]
         public HttpResponseMessage GetByCountryName(string name)
         {
             Country countryObj = countryList.Find(item => item.Name.Equals(name));
