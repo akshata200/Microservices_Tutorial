@@ -65,15 +65,15 @@ Insert into tblEmp Values(7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30)
    select EName, Salary from tblEmp
    where EName != 'James'
 
--- 4. Find out the details of employees whose names begin with ‘S’. 
+-- 4. Find out the details of employees whose names begin with â€˜Sâ€™. 
    select * from tblEmp
    where EName like 'S%'
 
--- 5. Find out the names of all employees that have ‘A’ anywhere in their name. 
+-- 5. Find out the names of all employees that have â€˜Aâ€™ anywhere in their name. 
    select * from tblEmp
    where EName like '%A%'
 
--- 6. Find out the names of all employees that have ‘L’ as their third character in their name. 
+-- 6. Find out the names of all employees that have â€˜Lâ€™ as their third character in their name. 
    select * from tblEmp
    where EName like '__L%'
 
@@ -117,7 +117,7 @@ Insert into tblEmp Values(7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30)
 -- 15. Display the name of all employees who have two Ls in their name and are in 
 --     department 30 or their manager is 7782. 
        select * from tblEmp
-	   where EName like '%L%l%' and DeptNo=30 or MgrId=7782
+       where EName like '%L%l%' and DeptNo=30 or MgrId=7782
 
 -- 16. Display the names of employees with experience of over 10 years and under 20 yrs.
 --     Count the total number of employees. 
@@ -126,17 +126,24 @@ Insert into tblEmp Values(7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30)
        from tblEmp
        where DateDiff(Year,DateName(YEAR,HireDate),DateName(YEAR,GETDATE()))  >10 and 
 	   DateDiff(Year,DateName(YEAR,HireDate),DateName(YEAR,GETDATE())) < 20
+	   
+       select eName, year(getdate())-year(hiredate) from tblEmp
+       where year(getdate())-year(hiredate)>10 and
+	   year(getdate())-year(hiredate)<20
 
 	 
 -- 17. Retrieve the names of departments in ascending order and their employees in 
 --     descending order. 
        select d.DeptNo, d.DName, e.EName from tblDept d, tblEmp e
-	   where d.DeptNo = e.DeptNo
-	   order by d.DName, e.EName desc
+       where d.DeptNo = e.DeptNo
+       order by d.DName, e.EName desc
 
 -- 18. Find out experience of MILLER.
    select EName, DateDiff(Year,DateName(YEAR,HireDate),DateName(YEAR,GETDATE())) as Experience
    from tblEmp
    where EName='Miller'
+   
+   select eName, year(getdate())-year(hiredate) from tblEmp
+   where ename='Miller'
 
    
