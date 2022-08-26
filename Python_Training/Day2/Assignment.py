@@ -78,3 +78,21 @@ for fruitname, orderAmount in order.items():
 print('Cost Dict : ',cost)
 print('Stock Dict : ',stock)
 
+'''9. take a string, if any character occurce more then twice, replace it with z'''
+str1 = 'The Day was nice and pretty, so I decided to go for a walk in the garden. I never expected to meet my teacher there.'
+print(str1)
+
+wordCount = {}
+
+for c in str1:
+    if(c != 'Z'):
+        if c in wordCount.keys():
+            if (wordCount[c] > 2):
+                str1 = str1.replace(c, 'Z')
+            else:
+                wordCount[c]+=1
+        else:
+            wordCount[c]=1
+print(str1)
+print(wordCount)
+
