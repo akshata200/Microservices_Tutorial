@@ -183,6 +183,7 @@ file.close()
 
 file = open('data.txt','r')
 opFile = open('output.txt','w')
+opFile.write('ID,  Name,  Department,Location,Email, Salary, Proposed  Salary\n')
 line = file.readline()
 totalLines = 0
 while line:
