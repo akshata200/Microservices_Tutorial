@@ -128,3 +128,52 @@ print('***********************')
 print('Total number of records : ',totalLines)
 print('************ All Records Processed ***********')
 file.close()
+
+'''3. Continuation of above example:
+    First three character of name and first three character of location + @fis.com
+    if location is chennai 10% increment
+    else if location is kolkata 15% increment
+    else 20% increment
+    Then Print highest proposed salary
+'''
+
+file = open('data.txt','r')
+line = file.readline()
+totalLines = 0
+maxPropSal = 0
+while line:
+    totalLines += 1
+    print('Record Number : ',totalLines)
+    print('Id         : ',line[:4])
+    print('Name       : ',line[5:11])
+    print('Department : ',line[11:20])
+    location = line[21:28]
+    print('Location   : ',location)
+
+    email = line[5:8].lower()+line[21:24].lower()+'@fis.com'
+    print('Email      : ',email)
+
+    print('Salary     : ', line[30:35])
+
+    salary = int(line[30:35])
+    if(location=='Chennai'):
+        propSal = salary + (0.1 * salary)
+    elif location == 'Kolkata':
+        propSal = salary + (0.15 * salary)
+    else:
+        propSal = salary + (0.2 * salary)
+
+    if maxPropSal < propSal:
+        maxPropSal=propSal
+
+    print('PropSalary : ', propSal)
+    print('***********************\n')
+
+    line = file.readline()
+
+print('***********************')
+print('Maximum proposed Salary : ',maxPropSal)
+print('***********************')
+print('Total number of records : ',totalLines)
+print('************ All Records Processed ***********')
+file.close()
