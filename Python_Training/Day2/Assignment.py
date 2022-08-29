@@ -177,3 +177,39 @@ print('***********************')
 print('Total number of records : ',totalLines)
 print('************ All Records Processed ***********')
 file.close()
+
+
+# 4. write output of above question if record location is Chennai
+
+file = open('data.txt','r')
+opFile = open('output.txt','w')
+line = file.readline()
+totalLines = 0
+while line:
+    location = line[21:28]
+    if (location != 'Chennai'):
+        line = file.readline()
+        continue
+    totalLines += 1
+    id = line[:4]
+    name = line[5:11]
+    dept = line[11:20]
+    email = line[5:8].lower()+line[21:24].lower()+'@fis.com'
+    salary = int(line[30:35])
+    
+    if(location=='Chennai'):
+        propSal = salary + (0.1 * salary)
+    elif location == 'Kolkata':
+        propSal = salary + (0.15 * salary)
+    else:
+        propSal = salary + (0.2 * salary)
+
+    data = id+','+name+','+dept+','+location+','+email+','+str(salary)+','+str(propSal)+'\n'
+    opFile.write(data)
+    line = file.readline()
+
+print('***********************')
+print('Total number of records : ',totalLines)
+print('************ All Records Processed ***********')
+file.close()
+opFile.close()
