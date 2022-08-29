@@ -96,3 +96,35 @@ for c in str1:
 print(str1)
 print(wordCount)
 
+
+# Day 3 
+
+# 2. Create data.txt with atleast 5 records and print formatted record
+''' Record number : 1
+    Id         : 1001
+    Name       : John
+    Department : Analyst
+    Location   : Chennai
+    *********************
+    Record number : 2
+    
+    **********************
+    Total number of records : 9
+    ************ All Records Processed ***********
+'''
+file = open('data.txt','r')
+line = file.readline()
+totalLines = 0
+while line:
+    totalLines += 1
+    print('Record Number : ',totalLines)
+    print('Id         : ',line[:4])
+    print('Name       : ',line[5:11])
+    print('Department : ',line[11:20])
+    print('Location   : ',line[20:28])
+    print('***********************\n')
+    line = file.readline()
+print('***********************')
+print('Total number of records : ',totalLines)
+print('************ All Records Processed ***********')
+file.close()
