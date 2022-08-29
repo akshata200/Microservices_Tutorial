@@ -214,3 +214,40 @@ print('Total number of records : ',totalLines)
 print('************ All Records Processed ***********')
 file.close()
 opFile.close()
+
+# 5. Read data from data.txt and filter into different file based on location
+file = open('data.txt','r')
+chFile = open('Chennai.txt','w')
+kolFile = open('Kolkata.txt','w')
+othFile = open('Others.txt','w')
+chFile.write('ID,  Name,  Department,Location,Email, Salary\n')
+kolFile.write('ID,  Name,  Department,Location,Email, Salary\n')
+othFile.write('ID,  Name,  Department,Location,Email, Salary\n')
+line = file.readline()
+totalLines = 0
+while line:
+    totalLines += 1
+    id = line[:4]
+    name = line[5:11]
+    dept = line[11:20]
+    location = line[21:28]
+    email = line[5:8].lower()+line[21:24].lower()+'@fis.com'
+    salary = line[30:35]
+    data = id+' '+name+' '+dept+' '+location+' '+email+' '+str(salary)+' '+'\n'
+
+    if (location == 'Chennai'):
+        chFile.write(data)
+    elif (location == 'Kolkata'):
+        kolFile.write(data)
+    else:
+        othFile.write(data)
+
+    line = file.readline()
+
+print('***********************')
+print('Total number of records : ',totalLines)
+print('************ All Records Processed ***********')
+file.close()
+chFile.close()
+kolFile.close()
+othFile.close()
